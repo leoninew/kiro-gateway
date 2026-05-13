@@ -86,6 +86,7 @@ from kiro.model_resolver import ModelResolver
 from kiro.account_manager import AccountManager
 from kiro.routes_openai import router as openai_router
 from kiro.routes_anthropic import router as anthropic_router
+from kiro.routes_admin import router as admin_router
 from kiro.exceptions import validation_exception_handler
 from kiro.debug_middleware import DebugLoggerMiddleware
 
@@ -574,6 +575,9 @@ app.include_router(openai_router)
 
 # Anthropic-compatible API: /v1/messages
 app.include_router(anthropic_router)
+
+# Admin API: /admin/reload, /admin/status, /admin/accounts
+app.include_router(admin_router)
 
 
 # --- Uvicorn log config ---
